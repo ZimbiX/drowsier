@@ -46,6 +46,7 @@ To run a manual test:
 
 ## Todo
 
+- Use a logger
 - Pause media / mute when locking
 - Publish package to Arch User Repository
 - Restart automatically when config is changed

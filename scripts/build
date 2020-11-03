@@ -6,4 +6,4 @@ cd "$(dirname "$0")/.."
 
 set -x
 
-crystal build drowsier.cr --stats
+crystal build src/drowsier.cr --stats
