@@ -2,6 +2,18 @@
 
 set -Eeuo pipefail
 
+cd "$(dirname "$0")/.."
+
 set -x
 
-sudo cp -f drowsier /usr/bin/
+cp -f drowsier /usr/bin/
+
+mkdir -p /etc/drowsier
+cp -f config.yaml /etc/drowsier/
+
+cp -f systemd/drowsier.service /etc/systemd/system/
+
+systemctl daemon-reload
+systemctl enable drowsier
+systemctl restart drowsier
+systemctl status drowsier

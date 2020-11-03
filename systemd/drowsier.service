@@ -1,0 +1,12 @@
+[Unit]
+Description=Drowsier
+Documentation=https://github.com/ZimbiX/drowsier
+
+[Service]
+Type=simple
+Environment="CONFIG=/etc/drowsier/config.yaml"
+ExecStart=/usr/bin/drowsier
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
