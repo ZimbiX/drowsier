@@ -7,7 +7,7 @@ Dir.chdir(File.join(__dir__, '..'))
 
 test_config_path = '/tmp/drowsier-config-test.yaml'
 delay_seconds = 0
-lockdown_duration_seconds = 30
+lockdown_duration_seconds = 10
 lockdown_start_at = Time.now + delay_seconds
 lockdown_end_at = lockdown_start_at + lockdown_duration_seconds
 
@@ -15,9 +15,10 @@ config = YAML.load(File.read('config.yaml'))
 config.merge!(
   'lockdown_start_at' => lockdown_start_at.strftime('%H:%M:%S'),
   'lockdown_end_at' => lockdown_end_at.strftime('%H:%M:%S'),
-  'check_interval_seconds' => 60,
-  'force_screen_off_seconds' => 10,
+  'lock_screen' => false,
+  'check_interval_seconds' => 15,
   'align_to_interval' => false,
+  'force_screen_off_seconds' => lockdown_duration_seconds,
 )
 File.write(test_config_path, config.to_yaml)
 

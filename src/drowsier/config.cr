@@ -11,6 +11,9 @@ module Drowsier
       @[YAML::Field(key: "lockdown_end_at")]
       property lockdown_end_at_str : String
 
+      @[YAML::Field(key: "lock_screen")]
+      property lock_screen : Bool
+
       @[YAML::Field(key: "check_interval_seconds")]
       property check_interval_seconds : Int32
 
@@ -58,6 +61,7 @@ module Drowsier
     private getter config_file
 
     delegate \
+      lock_screen,
       check_interval_seconds,
       align_to_interval,
       force_screen_off_seconds,

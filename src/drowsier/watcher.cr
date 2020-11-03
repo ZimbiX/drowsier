@@ -53,7 +53,7 @@ module Drowsier
 
     private def enact_lockdown!
       system.pause_media!
-      system.lock_screen!
+      system.lock_screen! if config.lock_screen
       constantly_force_screen_off_for_configured_period!
     end
 
