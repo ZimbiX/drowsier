@@ -7,10 +7,13 @@ A tiny program that helps you get to bed by locking your computer for a while at
 <!-- MarkdownTOC autolink=true -->
 
 - [Motivation](#motivation)
+- [Supported platforms](#supported-platforms)
 - [Development](#development)
   - [Setup](#setup)
   - [Build & install](#build--install)
   - [Test](#test)
+- [Configure](#configure)
+- [Contributing](#contributing)
 - [Todo](#todo)
 - [Alternatives](#alternatives)
 
@@ -19,6 +22,10 @@ A tiny program that helps you get to bed by locking your computer for a while at
 ## Motivation
 
 I am chronically terrible at stopping what I'm doing at night and going to bed!
+
+## Supported platforms
+
+This app was written primarily for Arch Linux, and is set up for systemd; however, all the commands executed to perform the various required actions are configurable. I may eventually provide support for other systems, but you're welcome to set it up yourself. See [this blog post](https://www.ctrl.blog/entry/lock-pc-at-bedtime.html) for some commands to use.
 
 ## Development
 
@@ -44,10 +51,19 @@ To run a manual test:
 ./scripts/test
 ```
 
+## Configure
+
+The YAML config file lives at: `/etc/drowsier/config.yaml`
+
+## Contributing
+
+Pull requests and suggestions welcome!
+
 ## Todo
 
 - Use a logger
 - Pause media / mute when locking
+- Publish pre-built binary
 - Publish package to Arch User Repository
 - Restart automatically when config is changed
 - Support multiple lockdown periods
