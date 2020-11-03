@@ -67,6 +67,7 @@ module Drowsier
         end
         sleep(1)
       end
+      system.turn_on_screen! if config.turn_on_screen_after_forced_off_period
     end
 
     private getter system do

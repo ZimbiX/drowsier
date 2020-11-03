@@ -19,6 +19,7 @@ config.merge!(
   'check_interval_seconds' => 15,
   'align_to_interval' => false,
   'force_screen_off_seconds' => lockdown_duration_seconds,
+  'turn_on_screen_after_forced_off_period' => true,
 )
 File.write(test_config_path, config.to_yaml)
 

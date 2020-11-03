@@ -13,6 +13,11 @@ module Drowsier
       `#{config.turn_off_screen_command}`
     end
 
+    def turn_on_screen!
+      puts "Turning off screen"
+      `#{config.turn_on_screen_command}`
+    end
+
     def screen_off?
       `#{config.check_if_screen_is_off_command}`
       $?.success?.tap { |off| puts(off ? "Screen is off" : "Screen is on") }

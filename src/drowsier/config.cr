@@ -23,6 +23,9 @@ module Drowsier
       @[YAML::Field(key: "force_screen_off_seconds")]
       property force_screen_off_seconds : Int32
 
+      @[YAML::Field(key: "turn_on_screen_after_forced_off_period")]
+      property turn_on_screen_after_forced_off_period : Bool
+
       @[YAML::Field(key: "lock_screen_command")]
       property lock_screen_command : String
 
@@ -31,6 +34,9 @@ module Drowsier
 
       @[YAML::Field(key: "turn_off_screen_command")]
       property turn_off_screen_command : String
+
+      @[YAML::Field(key: "turn_on_screen_command")]
+      property turn_on_screen_command : String
 
       @[YAML::Field(key: "pause_media_command")]
       property pause_media_command : String
@@ -65,9 +71,11 @@ module Drowsier
       check_interval_seconds,
       align_to_interval,
       force_screen_off_seconds,
+      turn_on_screen_after_forced_off_period,
       lock_screen_command,
       check_if_screen_is_off_command,
       turn_off_screen_command,
+      turn_on_screen_command,
       pause_media_command,
       play_audio_notification_command,
       to: config_file
