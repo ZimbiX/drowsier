@@ -2,3 +2,6 @@ lockdown_start_at: 00:00
 lockdown_end_at: 00:05
 check_interval_seconds: 2
 force_screen_off_seconds: 60
+lock_screen_command: /usr/bin/loginctl lock-session
+check_if_screen_is_off_command: /usr/bin/xset q | grep 'Monitor is Off'
+turn_off_screen_command: /usr/bin/xset dpms force off

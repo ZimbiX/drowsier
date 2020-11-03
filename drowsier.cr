@@ -58,6 +58,15 @@ class Drowsier
     @[YAML::Field(key: "force_screen_off_seconds")]
     property force_screen_off_seconds : Int32
 
+    @[YAML::Field(key: "lock_screen_command")]
+    property lock_screen_command : String
+
+    @[YAML::Field(key: "check_if_screen_is_off_command")]
+    property check_if_screen_is_off_command : String
+
+    @[YAML::Field(key: "turn_off_screen_command")]
+    property turn_off_screen_command : String
+
     def lockdown_start_at_time
       DatelessTime.from_string(lockdown_start_at_str)
     end
@@ -74,14 +83,26 @@ class Drowsier
     end
   end
 
-  module System
-    def self.lock_screen
-      `/usr/bin/loginctl lock-session`
+  class System
+    def initialize(@config : Config)
     end
 
-    def self.turn_off_screen
-      `/usr/bin/xset dpms force off`
+    def lock_screen!
+      puts "Locking screen"
+      `#{config.lock_screen_command}`
     end
+
+    def turn_off_screen!
+      puts "Turning off screen"
+      `#{config.turn_off_screen_command}`
+    end
+
+    def screen_off?
+      `#{config.check_if_screen_is_off_command}`
+      $?.success?.tap { |off| puts(off ? "Screen is off" : "Screen is on") }
+    end
+
+    private getter config
   end
 
   class Watcher
@@ -135,21 +156,26 @@ class Drowsier
     end
 
     private def enact_lockdown!
-      System.lock_screen
-      actively_force_screen_off_for_configured_period!
+      system.lock_screen!
+      constantly_force_screen_off_for_configured_period!
     end
 
-    private def actively_force_screen_off_for_configured_period!
+    private def constantly_force_screen_off_for_configured_period!
       stop_at = Time.local + config.force_screen_off_seconds.seconds
       while Time.local < stop_at
-        System.turn_off_screen
+        system.turn_off_screen! unless system.screen_off?
         sleep(1)
       end
+    end
+
+    private def system
+      System.new(config)
     end
 
     private getter hours, minutes, seconds, config
   end
 end
 
-config = Drowsier::Config.from_yaml(File.read("config.yaml"))
+config_path = ENV.fetch("CONFIG", "config.yaml")
+config = Drowsier::Config.from_yaml(File.read(config_path))
 Drowsier::Watcher.new(config).run

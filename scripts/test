@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require 'awesome_print'
+require 'yaml'
+
+Dir.chdir(File.join(__dir__, '..'))
+
+test_config_path = '/tmp/drowsier-config-test.yaml'
+delay_seconds = 0
+lockdown_duration_seconds = 30
+lockdown_start_at = Time.now + delay_seconds
+lockdown_end_at = lockdown_start_at + lockdown_duration_seconds
+
+config = YAML.load(File.read('config.yaml'))
+config.merge!(
+  'lockdown_start_at' => lockdown_start_at.strftime('%H:%M:%S'),
+  'lockdown_end_at' => lockdown_end_at.strftime('%H:%M:%S'),
+  'check_interval_seconds' => 60,
+  'force_screen_off_seconds' => 10,
+)
+File.write(test_config_path, config.to_yaml)
+
+ap config
+
+exec "CONFIG=#{test_config_path} crystal run drowsier.cr --error-trace"
