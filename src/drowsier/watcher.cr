@@ -34,7 +34,7 @@ module Drowsier
     end
 
     private def lockdown_period?(now)
-      time_within?(config.lockdown_start_at_time, config.lockdown_end_at_time, now)
+      time_within?(config.lockdown_start_at, config.lockdown_end_at, now)
     end
 
     private def sleep_until_start_of_next_interval
@@ -57,6 +57,7 @@ module Drowsier
 
     private def constantly_force_screen_off_for_configured_period!
       stop_at = Time.local + config.force_screen_off_seconds.seconds
+      puts "Continuously forcing screen off for %d seconds, until %s" % [config.force_screen_off_seconds, stop_at]
       while Time.local < stop_at
         unless system.screen_off?
           system.play_audio_notification!

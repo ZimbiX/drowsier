@@ -66,6 +66,7 @@ Pull requests and suggestions welcome!
 
 ## Todo
 
+- Allow disabling aligning poll to interval, for easier testing
 - Use a logger
 - Pause all media / mute when locking
 - Publish pre-built binary
