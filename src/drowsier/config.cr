@@ -25,6 +25,12 @@ module Drowsier
     @[YAML::Field(key: "turn_off_screen_command")]
     property turn_off_screen_command : String
 
+    @[YAML::Field(key: "pause_media_command")]
+    property pause_media_command : String
+
+    @[YAML::Field(key: "play_audio_notification_command")]
+    property play_audio_notification_command : String
+
     def lockdown_start_at_time
       DatelessTime.from_string(lockdown_start_at_str)
     end

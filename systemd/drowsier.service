@@ -6,6 +6,7 @@ Documentation=https://github.com/ZimbiX/drowsier
 Type=simple
 Environment="CONFIG=/etc/drowsier/config.yaml"
 ExecStart=/usr/bin/drowsier
+WorkingDirectory=/etc/drowsier
 Restart=always
 
 [Install]

@@ -13,6 +13,7 @@ A tiny program that helps you get to bed by locking your computer for a while at
   - [Build & install](#build--install)
   - [Test](#test)
 - [Configure](#configure)
+  - [Audio notification](#audio-notification)
 - [Contributing](#contributing)
 - [Todo](#todo)
 - [Alternatives](#alternatives)
@@ -54,6 +55,10 @@ To run a manual test:
 ## Configure
 
 The YAML config file lives at: `/etc/drowsier/config.yaml`
+
+### Audio notification
+
+You can generate a custom spoken notification with [Sound of Text](https://soundoftext.com/) - using the text to speech engine from Google Translate.
 
 ## Contributing
 

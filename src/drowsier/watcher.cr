@@ -50,7 +50,9 @@ module Drowsier
     end
 
     private def enact_lockdown!
+      system.pause_media!
       system.lock_screen!
+      system.play_audio_notification!
       constantly_force_screen_off_for_configured_period!
     end
 

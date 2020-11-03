@@ -18,6 +18,18 @@ module Drowsier
       $?.success?.tap { |off| puts(off ? "Screen is off" : "Screen is on") }
     end
 
+    def pause_media!
+      `#{config.pause_media_command}`
+    end
+
+    def play_audio_notification!
+      command_pieces = config.play_audio_notification_command.split(" ")
+      Process.new(
+        command_pieces[0],
+        command_pieces[1..-1],
+      )
+    end
+
     private getter config
   end
 end

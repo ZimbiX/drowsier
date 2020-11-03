@@ -5,3 +5,5 @@ force_screen_off_seconds: 300
 lock_screen_command: /usr/bin/loginctl lock-session
 check_if_screen_is_off_command: /usr/bin/xset q | grep 'Monitor is Off'
 turn_off_screen_command: /usr/bin/xset dpms force off
+pause_media_command: /usr/bin/dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
+play_audio_notification_command: /usr/bin/ffplay -nodisp -autoexit audio-notifications/goodnight-de.mp3
