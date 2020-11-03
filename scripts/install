@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -Eeuo pipefail
+
+set -x
+
+sudo cp -f drowsier /usr/bin/
