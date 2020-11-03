@@ -44,6 +44,8 @@ module Drowsier
     end
 
     private def seconds_until_start_of_next_interval
+      return config.check_interval_seconds unless config.align_to_interval
+
       now_f = Time.local.to_unix_f
       interval = config.check_interval_seconds
       interval - now_f % interval

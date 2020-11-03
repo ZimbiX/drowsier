@@ -14,6 +14,9 @@ module Drowsier
       @[YAML::Field(key: "check_interval_seconds")]
       property check_interval_seconds : Int32
 
+      @[YAML::Field(key: "align_to_interval")]
+      property align_to_interval : Bool
+
       @[YAML::Field(key: "force_screen_off_seconds")]
       property force_screen_off_seconds : Int32
 
@@ -56,6 +59,7 @@ module Drowsier
 
     delegate \
       check_interval_seconds,
+      align_to_interval,
       force_screen_off_seconds,
       lock_screen_command,
       check_if_screen_is_off_command,

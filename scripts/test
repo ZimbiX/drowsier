@@ -17,6 +17,7 @@ config.merge!(
   'lockdown_end_at' => lockdown_end_at.strftime('%H:%M:%S'),
   'check_interval_seconds' => 60,
   'force_screen_off_seconds' => 10,
+  'align_to_interval' => false,
 )
 File.write(test_config_path, config.to_yaml)
 
