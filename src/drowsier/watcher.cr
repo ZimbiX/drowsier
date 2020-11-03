@@ -52,14 +52,16 @@ module Drowsier
     private def enact_lockdown!
       system.pause_media!
       system.lock_screen!
-      system.play_audio_notification!
       constantly_force_screen_off_for_configured_period!
     end
 
     private def constantly_force_screen_off_for_configured_period!
       stop_at = Time.local + config.force_screen_off_seconds.seconds
       while Time.local < stop_at
-        system.turn_off_screen! unless system.screen_off?
+        unless system.screen_off?
+          system.play_audio_notification!
+          system.turn_off_screen!
+        end
         sleep(1)
       end
     end

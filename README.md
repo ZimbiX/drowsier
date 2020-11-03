@@ -67,7 +67,7 @@ Pull requests and suggestions welcome!
 ## Todo
 
 - Use a logger
-- Pause media / mute when locking
+- Pause all media / mute when locking
 - Publish pre-built binary
 - Publish package to Arch User Repository
 - Restart automatically when config is changed
