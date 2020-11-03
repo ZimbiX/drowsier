@@ -23,13 +23,20 @@ module Drowsier
     end
 
     def play_audio_notification!
+      stop_existing_audio_notification!
       command_pieces = config.play_audio_notification_command.split(" ")
-      Process.new(
+      @audio_notification_process = Process.new(
         command_pieces[0],
         command_pieces[1..-1],
       )
     end
 
+    private def stop_existing_audio_notification!
+      audio_notification_process.try &.terminate
+    end
+
     private getter config
+
+    private property audio_notification_process : Process?
   end
 end
