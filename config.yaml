@@ -1,0 +1,3 @@
+lockdown_start_at: 00:00
+lockdown_end_at: 00:05
+check_interval_seconds: 2
