@@ -66,7 +66,7 @@ module Drowsier
       end
     end
 
-    private def system
+    private getter system do
       System.new(config)
     end
 
