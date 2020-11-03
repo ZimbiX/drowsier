@@ -55,6 +55,9 @@ class Drowsier
     @[YAML::Field(key: "check_interval_seconds")]
     property check_interval_seconds : Int32
 
+    @[YAML::Field(key: "force_screen_off_seconds")]
+    property force_screen_off_seconds : Int32
+
     def lockdown_start_at_time
       DatelessTime.from_string(lockdown_start_at_str)
     end
@@ -74,6 +77,10 @@ class Drowsier
   module System
     def self.lock_screen
       `/usr/bin/loginctl lock-session`
+    end
+
+    def self.turn_off_screen
+      `/usr/bin/xset dpms force off`
     end
   end
 
@@ -129,6 +136,15 @@ class Drowsier
 
     private def enact_lockdown!
       System.lock_screen
+      actively_force_screen_off_for_configured_period!
+    end
+
+    private def actively_force_screen_off_for_configured_period!
+      stop_at = Time.local + config.force_screen_off_seconds.seconds
+      while Time.local < stop_at
+        System.turn_off_screen
+        sleep(1)
+      end
     end
 
     private getter hours, minutes, seconds, config
