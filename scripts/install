@@ -6,15 +6,16 @@ cd "$(dirname "$0")/.."
 
 set -x
 
-cp -f drowsier /usr/bin/
+mkdir -p ~/.local/bin/
+cp -f drowsier ~/.local/bin/
 
-mkdir -p /etc/drowsier
-cp -f config.yaml /etc/drowsier/
-cp -rf audio-notifications /etc/drowsier/
+mkdir -p ~/.config/drowsier/
+cp -f config.yaml ~/.config/drowsier/
+cp -rf audio-notifications ~/.config/drowsier/
 
-cp -f systemd/drowsier.service /etc/systemd/system/
+mkdir -p ~/.config/systemd/user/
+cp -f systemd/drowsier.service ~/.config/systemd/user/
 
-systemctl daemon-reload
-systemctl enable drowsier
-systemctl restart drowsier
-systemctl status drowsier
+systemctl enable --user drowsier
+systemctl restart --user drowsier
+systemctl status --user drowsier

@@ -5,9 +5,9 @@ check_interval_seconds: 600
 align_to_interval: true
 force_screen_off_seconds: 300
 turn_on_screen_after_forced_off_period: true
-lock_screen_command: /usr/bin/loginctl lock-session
-check_if_screen_is_off_command: /usr/bin/xset q | grep 'Monitor is Off'
-turn_off_screen_command: /usr/bin/xset dpms force off
-turn_on_screen_command: /usr/bin/xset dpms force on
-pause_media_command: /usr/bin/dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
-play_audio_notification_command: /usr/bin/ffplay -nodisp -autoexit audio-notifications/goodnight-de.mp3
+lock_screen_command: loginctl lock-session
+check_if_screen_is_off_command: xset q | grep 'Monitor is Off'
+turn_off_screen_command: xset dpms force off
+turn_on_screen_command: xset dpms force on
+pause_media_command: dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
+play_audio_notification_command: ffplay -nodisp -autoexit audio-notifications/goodnight-de.mp3

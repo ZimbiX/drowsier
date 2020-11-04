@@ -4,10 +4,10 @@ Documentation=https://github.com/ZimbiX/drowsier
 
 [Service]
 Type=simple
-Environment="CONFIG=/etc/drowsier/config.yaml"
-ExecStart=/usr/bin/drowsier
-WorkingDirectory=/etc/drowsier
+Environment="CONFIG=%h/.config/drowsier/config.yaml"
+ExecStart=%h/.local/bin/drowsier
+WorkingDirectory=%h/.config/drowsier
 Restart=always
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

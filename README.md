@@ -77,6 +77,7 @@ Pull requests and suggestions welcome!
 ## Todo
 
 - Use a logger
+- User config file which overrides default config file
 - Pause all media / mute when locking
 - Publish pre-built binary
 - Publish package to Arch User Repository
