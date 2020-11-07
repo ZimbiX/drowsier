@@ -10,4 +10,4 @@ check_if_screen_is_off_command: xset q | grep 'Monitor is Off'
 turn_off_screen_command: xset dpms force off
 turn_on_screen_command: xset dpms force on
 pause_media_command: dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
-play_audio_notification_command: ffplay -nodisp -autoexit audio-notifications/goodnight-de.mp3
+play_audio_notification_command: ffplay -nodisp -autoexit audio-notifications/goodnight-de.mp3 && ffplay -nodisp -autoexit audio-notifications/song.mp3
