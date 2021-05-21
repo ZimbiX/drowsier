@@ -78,7 +78,6 @@ Pull requests and suggestions welcome!
 
 - Use a logger
 - User config file which overrides default config file
-- Pause all media / mute when locking
 - Publish pre-built binary
 - Publish package to Arch User Repository
 - Restart automatically when config is changed
