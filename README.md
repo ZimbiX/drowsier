@@ -14,6 +14,7 @@ A tiny program that helps you get to bed by locking your computer for a while at
   - [Test](#test)
 - [Configure](#configure)
   - [Audio notification](#audio-notification)
+- [Dependencies](#dependencies)
 - [Contributing](#contributing)
 - [Todo](#todo)
 - [Alternatives](#alternatives)
@@ -70,12 +71,22 @@ The YAML config file lives at: `/etc/drowsier/config.yaml`
 
 You can generate a custom spoken notification with [Sound of Text](https://soundoftext.com/) - using the text to speech engine from Google Translate.
 
+## Dependencies
+
+The default configuration requires:
+
+- loginctl (systemd)
+- xset (Xorg)
+- playerctl
+- ffplay
+
 ## Contributing
 
 Pull requests and suggestions welcome!
 
 ## Todo
 
+- Stop audio notification when resuming from sleep in the morning
 - Use a logger
 - User config file which overrides default config file
 - Publish pre-built binary
