@@ -12,6 +12,7 @@ A tiny program that helps you get to bed by locking your computer for a while at
 - [Development](#development)
   - [Setup](#setup)
   - [Build & install](#build--install)
+    - [Add to shell login](#add-to-shell-login)
   - [Test](#test)
 - [Configure](#configure)
   - [Audio notification](#audio-notification)
@@ -68,6 +69,17 @@ sudo pacman -S crystal
 
 ```bash
 ./scripts/build && sudo ./scripts/install
+```
+
+#### Add to shell login
+
+To prevent TTY/SSH from being used to circumvent lockdown, add a Drowsier command to your `.bashrc` or `.zshrc`:
+
+```bash
+echo -e "
+if command -v drowsier &>/dev/null; then
+  drowsier --tty || exit
+fi" >> ~/.zshrc
 ```
 
 ### Test
