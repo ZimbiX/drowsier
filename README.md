@@ -65,7 +65,7 @@ To run a manual test:
 
 ## Configure
 
-The YAML config file lives at: `/etc/drowsier/config.yaml`
+The YAML config file lives at: `~/.config/drowsier/config.yaml`
 
 ### Audio notification
 
@@ -97,6 +97,7 @@ Pull requests and suggestions welcome!
 - Support MacOS
 - Support Wayland
 - Support other Linux init systems
+- Add unit tests
 
 ## Alternatives
 
