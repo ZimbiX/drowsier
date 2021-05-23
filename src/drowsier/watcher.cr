@@ -11,6 +11,14 @@ module Drowsier
       end
     end
 
+    def tty
+      puts "Drowsier running check for TTY..."
+      if lockdown_period?
+        puts "Shell needs to exit"
+        exit 1
+      end
+    end
+
     private def startup
       puts "Drowsier starting up..."
       exit_if_system_not_ready!
@@ -35,7 +43,7 @@ module Drowsier
     private def lockdown_period?
       now_dated = Time.local
       now = dateless(now_dated)
-      print "\nChecking #{now_dated.to_s}, +#{now_dated.millisecond}ms... "
+      print "Checking #{now_dated.to_s}, +#{now_dated.millisecond}ms... "
 
       time_within?(config.lockdown_start_at, config.lockdown_end_at, now).tap do |need_to_enact_lockdown|
         puts(need_to_enact_lockdown ? "Sleep!" : "Ok")
@@ -46,6 +54,7 @@ module Drowsier
       sleep_seconds = seconds_until_start_of_next_interval
       puts "Will check again in %.2f seconds" % sleep_seconds
       sleep(sleep_seconds)
+      puts
     end
 
     private def seconds_until_start_of_next_interval

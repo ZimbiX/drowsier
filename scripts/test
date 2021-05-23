@@ -25,4 +25,6 @@ File.write(test_config_path, config.to_yaml)
 
 ap config
 
-exec "CONFIG=#{test_config_path} crystal run src/drowsier.cr --error-trace"
+cmd = "CONFIG=#{test_config_path} crystal run src/drowsier.cr --error-trace#{ARGV[0] && " -- " + ARGV[0]}"
+puts "+ #{cmd}"
+exec cmd
