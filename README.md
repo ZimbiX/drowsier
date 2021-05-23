@@ -92,6 +92,7 @@ Pull requests and suggestions welcome!
 
 ## Todo
 
+- Support adding to dotfiles to prevent TTY/SSH from being used to circumvent lockdown - with emergency override via long printed codes
 - Stop audio notification when resuming from sleep in the morning
 - Use a logger
 - User config file which overrides default config file

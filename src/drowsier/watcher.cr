@@ -4,27 +4,20 @@ module Drowsier
     end
 
     def run
+      startup
+      loop do
+        enact_lockdown! if lockdown_period?
+        sleep_until_start_of_next_interval
+      end
+    end
+
+    private def startup
       puts "Drowsier starting up..."
       exit_if_system_not_ready!
       puts "Drowsier running!"
       puts
       puts "Config:"
       puts config.to_s
-
-      loop do
-        now_dated = Time.local
-        now = dateless(now_dated)
-        print "\nChecking #{now_dated.to_s}, +#{now_dated.millisecond}ms... "
-
-        if lockdown_period?(now)
-          puts "Sleep!"
-          enact_lockdown!
-        else
-          puts "Ok"
-        end
-
-        sleep_until_start_of_next_interval
-      end
     end
 
     private def exit_if_system_not_ready!
@@ -39,8 +32,14 @@ module Drowsier
       start_time <= time && time < end_time
     end
 
-    private def lockdown_period?(now)
-      time_within?(config.lockdown_start_at, config.lockdown_end_at, now)
+    private def lockdown_period?
+      now_dated = Time.local
+      now = dateless(now_dated)
+      print "\nChecking #{now_dated.to_s}, +#{now_dated.millisecond}ms... "
+
+      time_within?(config.lockdown_start_at, config.lockdown_end_at, now).tap do |need_to_enact_lockdown|
+        puts(need_to_enact_lockdown ? "Sleep!" : "Ok")
+      end
     end
 
     private def sleep_until_start_of_next_interval
