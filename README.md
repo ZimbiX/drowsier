@@ -8,13 +8,13 @@ A tiny program that helps you get to bed by locking your computer for a while at
 
 - [Motivation](#motivation)
 - [Supported platforms](#supported-platforms)
+- [Dependencies](#dependencies)
 - [Development](#development)
   - [Setup](#setup)
   - [Build & install](#build--install)
   - [Test](#test)
 - [Configure](#configure)
   - [Audio notification](#audio-notification)
-- [Dependencies](#dependencies)
 - [Contributing](#contributing)
 - [Todo](#todo)
 - [Alternatives](#alternatives)
@@ -38,6 +38,21 @@ Writing this is also a good opportunity for me to try out a bit more programming
 ## Supported platforms
 
 This app was written primarily for Arch Linux, and is set up for systemd; however, all the commands executed to perform the various required actions are configurable. I may eventually provide support for other systems, but you're welcome to set it up yourself. See [this blog post](https://www.ctrl.blog/entry/lock-pc-at-bedtime.html) for some commands to use.
+
+## Dependencies
+
+The default configuration requires:
+
+- loginctl (systemd)
+- xset (Xorg)
+- playerctl
+- ffplay
+
+If using the default configuration, you'll need to install its runtime dependencies, e.g. on Arch Linux:
+
+```bash
+sudo pacman -S xorg-xset playerctl ffmpeg
+```
 
 ## Development
 
@@ -70,15 +85,6 @@ The YAML config file lives at: `~/.config/drowsier/config.yaml`
 ### Audio notification
 
 You can generate a custom spoken notification with [Sound of Text](https://soundoftext.com/) - using the text to speech engine from Google Translate.
-
-## Dependencies
-
-The default configuration requires:
-
-- loginctl (systemd)
-- xset (Xorg)
-- playerctl
-- ffplay
 
 ## Contributing
 
