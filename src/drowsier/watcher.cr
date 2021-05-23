@@ -4,6 +4,8 @@ module Drowsier
     end
 
     def run
+      puts "Drowsier starting up..."
+      exit_if_system_not_ready!
       puts "Drowsier running!"
       puts
       puts "Config:"
@@ -23,6 +25,10 @@ module Drowsier
 
         sleep_until_start_of_next_interval
       end
+    end
+
+    private def exit_if_system_not_ready!
+      exit 1 unless system.startup_ready?
     end
 
     private def dateless(now)

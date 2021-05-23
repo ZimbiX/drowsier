@@ -1,6 +1,7 @@
 module Drowsier
   class System
     def initialize(@config : Config)
+      @output = IO::Memory.new
     end
 
     def lock_screen! : Void
@@ -32,16 +33,31 @@ module Drowsier
       @audio_notification_process = run(config.play_audio_notification_command)
     end
 
+    def startup_ready? : Bool
+      run(config.system_startup_readiness_check_command).wait
+        .tap do |result|
+          if result.success?
+            puts "System is ready"
+          else
+            puts output.to_s
+            puts "System is not ready"
+          end
+        end
+        .success?
+    end
+
     private def stop_existing_audio_notification! : Void
       audio_notification_process.try &.terminate
     end
 
     private def run(command)
-      puts command
-      Process.new(command, shell: true)
+      puts "+ " + command
+      @output.clear
+      Process.new(command, shell: true, output: output, error: output)
     end
 
     private getter config
+    private getter output
 
     private property audio_notification_process : Process?
   end

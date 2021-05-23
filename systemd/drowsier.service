@@ -1,6 +1,7 @@
 [Unit]
 Description=Drowsier
 Documentation=https://github.com/ZimbiX/drowsier
+PartOf=graphical-session.target
 
 [Service]
 Type=simple
@@ -8,6 +9,5 @@ Environment="CONFIG=%h/.config/drowsier/config.yaml"
 ExecStart=%h/.local/bin/drowsier
 WorkingDirectory=%h/.config/drowsier
 Restart=always
-
-[Install]
-WantedBy=default.target
+RestartSec=1
+StartLimitInterval=0

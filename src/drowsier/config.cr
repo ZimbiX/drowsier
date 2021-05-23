@@ -43,6 +43,9 @@ module Drowsier
 
       @[YAML::Field(key: "play_audio_notification_command")]
       property play_audio_notification_command : String
+
+      @[YAML::Field(key: "system_startup_readiness_check_command")]
+      property system_startup_readiness_check_command : String
     end
 
     def initialize(config_file_path : String)
@@ -78,6 +81,7 @@ module Drowsier
       turn_on_screen_command,
       pause_media_command,
       play_audio_notification_command,
+      system_startup_readiness_check_command,
       to: config_file
   end
 end

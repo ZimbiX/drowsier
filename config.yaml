@@ -1,9 +1,9 @@
-lockdown_start_at: 00:00
+lockdown_start_at: 00:50
 lockdown_end_at: 06:00
 lock_screen: true
-check_interval_seconds: 600
+check_interval_seconds: 60
 align_to_interval: true
-force_screen_off_seconds: 300
+force_screen_off_seconds: 3000
 turn_on_screen_after_forced_off_period: true
 lock_screen_command: loginctl lock-session
 check_if_screen_is_off_command: xset q | grep 'Monitor is Off'
@@ -11,3 +11,4 @@ turn_off_screen_command: xset dpms force off
 turn_on_screen_command: xset dpms force on
 pause_media_command: playerctl --all-players pause
 play_audio_notification_command: ffplay -nodisp -autoexit audio-notifications/goodnight-de.mp3 && ffplay -nodisp -autoexit audio-notifications/song.mp3
+system_startup_readiness_check_command: xset q
