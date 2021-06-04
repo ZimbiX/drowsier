@@ -10,6 +10,7 @@ mkdir -p ~/.local/bin/
 cp -f drowsier ~/.local/bin/
 
 mkdir -p ~/.config/drowsier/
+
 cp -f config.yaml ~/.config/drowsier/
 cp -rf audio-notifications ~/.config/drowsier/
 
@@ -19,3 +20,6 @@ cp -f systemd/drowsier.service ~/.config/systemd/user/
 systemctl enable --user drowsier
 systemctl restart --user drowsier
 systemctl status --user drowsier
+
+# echo "Your new lockdown override codes:"
+# ruby -r securerandom -e '20.times { puts SecureRandom.alphanumeric(20) }'

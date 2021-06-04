@@ -12,3 +12,24 @@ turn_on_screen_command: xset dpms force on
 pause_media_command: playerctl --all-players pause
 play_audio_notification_command: ffplay -nodisp -autoexit audio-notifications/goodnight-de.mp3 && ffplay -nodisp -autoexit audio-notifications/song.mp3
 system_startup_readiness_check_command: xset q
+lockdown_override_codes:
+  - tW2qtdnRxCljWsCDHltr
+  - 38L7IZ8v5FJHacuSd24Z
+  - HN8xrQRfigjn4j73Gx6j
+  - Y6LPUzXAyOm6lTfxmw2I
+  - C400xFK9HffwBf2iZ0GZ
+  - 7NsFLcgzPO91kJmHvNkK
+  - YWimpAt3S6AQMEvTnRB3
+  - uBPooUMYb03o03S3HTQc
+  - 8pGzrNDDmIRfJoZFBPg6
+  - Lkb6znc404fe0fEopCBf
+  - yaOHRGGemZEolJYaSziW
+  - ZjEXEAq6loAKJ6GrrnVH
+  - jwcvxLTcuJVUXUZTkADl
+  - Ae9TBE7VZvzPmqrIjAw8
+  - DzKj5e3wHnrYid15xbJS
+  - KjUKgN1sxZ0iLuMWVaZF
+  - ZpbcX6BbqRSfts1dx2k5
+  - N8rOEFTMOJLUU69Zvbyh
+  - Q5iTF1qoHTvr8y2MkSBq
+  - RGdll5Gjlf6MLi24qWhG

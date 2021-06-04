@@ -46,6 +46,9 @@ module Drowsier
 
       @[YAML::Field(key: "system_startup_readiness_check_command")]
       property system_startup_readiness_check_command : String
+
+      @[YAML::Field(key: "lockdown_override_codes")]
+      property lockdown_override_codes : Array(String)
     end
 
     def initialize(config_file_path : String)
@@ -82,6 +85,7 @@ module Drowsier
       pause_media_command,
       play_audio_notification_command,
       system_startup_readiness_check_command,
+      lockdown_override_codes,
       to: config_file
   end
 end

@@ -1,3 +1,5 @@
+require "./override"
+
 module Drowsier
   class Watcher
     def initialize(@config : Config)
@@ -15,7 +17,7 @@ module Drowsier
       puts "Drowsier running check for TTY..."
       if lockdown_period?
         puts "Shell needs to exit"
-        exit 1
+        exit 1 unless lockdown_override_code?
       end
     end
 
@@ -82,6 +84,10 @@ module Drowsier
         sleep(1)
       end
       system.turn_on_screen! if config.turn_on_screen_after_forced_off_period
+    end
+
+    private def lockdown_override_code?
+      Override.new(config).override?
     end
 
     private getter system do

@@ -104,7 +104,7 @@ Pull requests and suggestions welcome!
 
 ## Todo
 
-- Support emergency override in TTY mode via long printed codes
+- Auto-generate printable override codes for TTY mode
 - Stop audio notification when resuming from sleep in the morning
 - Use a logger
 - User config file which overrides default config file
