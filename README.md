@@ -73,10 +73,10 @@ sudo pacman -S crystal
 
 #### Add to shell login
 
-To prevent TTY/SSH from being used to circumvent lockdown, add a Drowsier command to your `.bashrc` or `.zshrc`:
+To prevent TTY/SSH from being used to circumvent lockdown, add this to the beginning of your `.bashrc` or `.zshrc`:
 
 ```bash
-cat zshrc.zsh >> ~/.zshrc
+[[ -f ~/Projects/drowsier/zshrc.zsh ]] && source ~/Projects/drowsier/zshrc.zsh
 ```
 
 ### Test
