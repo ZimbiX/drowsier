@@ -2,7 +2,7 @@ require "./override"
 
 module Drowsier
   class Watcher
-    def initialize(@config : Config)
+    def initialize(@config : Config, @silent : Bool)
     end
 
     def run
@@ -14,9 +14,9 @@ module Drowsier
     end
 
     def tty
-      puts "Drowsier running check for TTY..."
+      puts "Drowsier running check for TTY..." unless silent
       if lockdown_period?
-        puts "Shell needs to exit"
+        puts "Drowsier is enforcing lockdown!"
         exit 1 unless lockdown_override_code?
       end
     end
@@ -45,10 +45,10 @@ module Drowsier
     private def lockdown_period?
       now_dated = Time.local
       now = dateless(now_dated)
-      print "Checking #{now_dated.to_s}, +#{now_dated.millisecond}ms... "
+      print "Checking #{now_dated.to_s}, +#{now_dated.millisecond}ms... " unless silent
 
       time_within?(config.lockdown_start_at, config.lockdown_end_at, now).tap do |need_to_enact_lockdown|
-        puts(need_to_enact_lockdown ? "Sleep!" : "Ok")
+        puts(need_to_enact_lockdown ? "Sleep!" : "Ok") unless silent
       end
     end
 
@@ -94,6 +94,6 @@ module Drowsier
       System.new(config)
     end
 
-    private getter hours, minutes, seconds, config
+    private getter hours, minutes, seconds, config, silent
   end
 end

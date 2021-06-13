@@ -6,9 +6,10 @@ require "./drowsier/watcher"
 
 config_path = ENV.fetch("CONFIG") { ENV.fetch("HOME") + "/.config/drowsier/config.yaml" }
 config = Drowsier::Config.new(config_path)
-watcher = Drowsier::Watcher.new(config)
+silent = ARGV.includes?("--silent")
+watcher = Drowsier::Watcher.new(config, silent)
 
-if ARGV.fetch(0, nil) == "--tty"
+if ARGV.includes?("--tty")
   watcher.tty
 else
   watcher.run
