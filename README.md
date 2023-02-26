@@ -68,7 +68,7 @@ sudo pacman -S crystal
 ### Build & install
 
 ```bash
-./scripts/build && sudo ./scripts/install
+./scripts/build && ./scripts/install
 ```
 
 #### Add to shell login
