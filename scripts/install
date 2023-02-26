@@ -17,6 +17,7 @@ cp -rf audio-notifications ~/.config/drowsier/
 mkdir -p ~/.config/systemd/user/
 cp -f systemd/drowsier.service ~/.config/systemd/user/
 
+systemctl --user daemon-reload
 systemctl enable --user drowsier
 systemctl restart --user drowsier
 systemctl status --user drowsier
