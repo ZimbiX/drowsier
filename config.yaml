@@ -12,6 +12,7 @@ turn_on_screen_command: xset dpms force on
 pause_media_command: playerctl --all-players pause
 play_audio_notification_command: ffplay -nodisp -autoexit audio-notifications/goodnight-de.mp3 && ffplay -nodisp -autoexit audio-notifications/song.mp3
 system_startup_readiness_check_command: xset q
+display_ansi_time_for_tty: false
 lockdown_override_codes:
   - tW2qtdnRxCljWsCDHltr
   - 38L7IZ8v5FJHacuSd24Z

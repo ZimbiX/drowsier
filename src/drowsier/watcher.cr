@@ -1,4 +1,5 @@
 require "./override"
+require "./ansi_time"
 
 module Drowsier
   class Watcher
@@ -17,6 +18,7 @@ module Drowsier
       puts "Drowsier running check for TTY..." unless silent
       if lockdown_period?
         puts "Drowsier is enforcing lockdown!"
+        puts AnsiTime.render(time: Time.local) if config.display_ansi_time_for_tty
         exit 1 unless lockdown_override_code?
       end
     end
