@@ -6,6 +6,15 @@ cd "$(dirname "$0")/.."
 
 set -x
 
+ruby -r bundler/inline -e "
+  gemfile(ui: true) do
+    source 'https://rubygems.org'
+    gem 'rainbow'
+    gem 'image2ascii'
+    gem 'rmagick'
+  end
+"
+
 mkdir -p ~/.local/bin/
 cp -f drowsier ~/.local/bin/
 
