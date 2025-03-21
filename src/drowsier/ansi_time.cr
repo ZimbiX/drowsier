@@ -2,11 +2,12 @@ module Drowsier
   class AnsiTime
     def self.render(time : Time) : String
       output = IO::Memory.new
+      error = IO::Memory.new
       time_svg_file_filled = File.tempfile("time-filled", ".svg") do |tempfile|
         time_svg_filled = self.time_svg_template(time: time.to_s("%l:%M %p"))
         tempfile.print(time_svg_filled)
       end
-      Process.new(image2ascii_command(path: time_svg_file_filled.path), shell: true, output: output, error: output).wait
+      Process.new(image2ascii_command(path: time_svg_file_filled.path), shell: true, output: output, error: error).wait
       time_svg_file_filled.delete
       output.to_s
     rescue
@@ -14,7 +15,7 @@ module Drowsier
     end
 
     def self.image2ascii_command(path : String)
-      "CLICOLOR_FORCE=1 TERM=blah /usr/bin/rbenv exec image2ascii '#{path}' --block --width 112"
+      "CLICOLOR_FORCE=1 TERM=xterm /usr/bin/rbenv exec image2ascii '#{path}' --block --width 112"
     end
 
     def self.time_svg_template(time : String) : String
