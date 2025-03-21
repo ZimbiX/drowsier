@@ -14,7 +14,7 @@ Dir.chdir(File.join(__dir__, '..'))
 
 test_config_path = '/tmp/drowsier-config-test.yaml'
 delay_seconds = 0
-lockdown_duration_seconds = 10
+lockdown_duration_seconds = 2
 lockdown_start_at = Time.now + delay_seconds
 lockdown_end_at = lockdown_start_at + lockdown_duration_seconds
 
