@@ -63,7 +63,7 @@ module Drowsier
     private def sleep_until_start_of_next_interval
       sleep_seconds = seconds_until_start_of_next_interval
       puts "Will check again in %.2f seconds" % sleep_seconds
-      sleep(sleep_seconds)
+      sleep(sleep_seconds.seconds)
       puts
     end
 
@@ -89,7 +89,7 @@ module Drowsier
           system.play_audio_notification!
           system.turn_off_screen!
         end
-        sleep(1)
+        sleep(1.second)
       end
       system.turn_on_screen! if config.turn_on_screen_after_forced_off_period
     end
