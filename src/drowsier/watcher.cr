@@ -40,8 +40,14 @@ module Drowsier
       DatelessTime.new(now.hour, now.minute, now.second)
     end
 
-    private def time_within?(start_time, end_time, time)
-      start_time <= time && time < end_time
+    private def time_within?(start_time, end_time, current_time)
+      if end_time >= start_time
+        # Lockdown period does not cross midnight
+        start_time <= current_time && current_time <= end_time
+      else
+        # Lockdown period crosses midnight
+        start_time <= current_time || current_time <= end_time
+      end
     end
 
     private def lockdown_period?

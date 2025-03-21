@@ -23,6 +23,14 @@ module Drowsier
       to_seconds <= other.to_seconds
     end
 
+    def >(other)
+      to_seconds > other.to_seconds
+    end
+
+    def >=(other)
+      to_seconds >= other.to_seconds
+    end
+
     def to_seconds
       hours * 60 * 60 + minutes * 60 + seconds
     end

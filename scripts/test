@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+require 'bundler/inline'
+
+gemfile(ui: true) do
+  source 'https://rubygems.org'
+  gem 'awesome_print'
+end
+
 require 'awesome_print'
 require 'yaml'
 
@@ -15,6 +22,8 @@ config = YAML.load(File.read('config.yaml'))
 config.merge!(
   'lockdown_start_at' => lockdown_start_at.strftime('%H:%M:%S'),
   'lockdown_end_at' => lockdown_end_at.strftime('%H:%M:%S'),
+  # 'lockdown_start_at' => '23:00',
+  # 'lockdown_end_at' => '06:00',
   'lock_screen' => false,
   'check_interval_seconds' => 15,
   'align_to_interval' => false,
